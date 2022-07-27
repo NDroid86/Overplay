@@ -175,8 +175,10 @@ class PlayerActivity : AppCompatActivity() {
                     // If distance greater than or equal to 10 meters ExoPlayer will reset and restart the video
                     if (distance >= 10.0) {
                         locationViewModel.storeCurrentLocation(currentLocation)
-                        player?.seekTo(0);
-                        player?.setPlayWhenReady(true)
+                        if(player != null && player?.isPlaying == true) {
+                            player?.seekTo(0);
+                            player?.setPlayWhenReady(true)
+                        }
                     }
                 }
             }
